@@ -1,0 +1,36 @@
+﻿@model SAT.DATA.EF.StudentStatus
+
+@{
+    ViewBag.Title = "Student Status Details";
+}
+
+
+<div class="card card-body max800 drop">
+    <h2 class="text-center pb-4">@ViewBag.Title</h2>
+    <div class="divCenter">
+        <dl class="dl-horizontal p-5">
+            <dt>
+                @Html.DisplayNameFor(model => model.SSName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SSName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SSDescription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SSDescription)
+            </dd>
+        </dl>
+    </div>
+    <p class="text-center">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.SSID }, new { @class = "btn btn-primary btn80" })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.SSID }, new { @class = "btn btn-primary btn80 ml-2" })
+        }
+        @*@Html.ActionLink("Cancel", "Index", "StudentStatus", new { @class = "btn btn-primary btn80" })*@
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80 mr-0">Cancel</a>
+    </p>
+</div>
+

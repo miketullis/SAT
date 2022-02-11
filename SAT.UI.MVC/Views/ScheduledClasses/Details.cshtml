@@ -1,0 +1,37 @@
+﻿@model SAT.DATA.EF.ScheduledClass
+
+@{
+    ViewBag.Title = "Class Details: " + @Model.ScheduledClassDesc;
+}
+
+<div class="card card-body max800 drop">
+    <h2 class="text-center pb-2">@ViewBag.Title</h2>
+    <div class="pt-5 pb-5 divCenter">
+        <dl class="dl-horizontal">
+            <dd>
+                <span class="font-weight-bold pr-2">Course Name:</span>@Html.DisplayFor(model => model.Course.CourseName)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Start Date:</span> @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">End Date:</span>@Html.DisplayFor(model => model.EndDate)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Instructor Name:</span>@Html.DisplayFor(model => model.InstructorName)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Location:</span>  @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Status:</span>  @Html.DisplayFor(model => model.ScheduledClassStatus.SCSName)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-12 text-center">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }, new { @class = "btn btn-primary btn80" })
+        @*@Html.ActionLink("Return", "Index", "Courses", new { @class = "btn btn-primary btn80" })*@
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80 mr-0">Return</a>
+    </div>
+</div>
+

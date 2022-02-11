@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SAT.DATA.EF.StudentStatus>
+
+@{
+    ViewBag.Title = "Student Status";
+}
+
+<div class="card card-body max1000 drop">
+    <h2 class="text-center">@ViewBag.Title</h2>
+    <div class="text-center pb-4">
+        @Html.ActionLink("Tiled View", "IndexTiles")
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SSName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SSDescription)
+                </th>
+                <th class="text-right">
+                    @Html.ActionLink("Create New Status", "Create")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SSName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SSDescription)
+                    </td>
+                    <td class="text-right">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SSID }) <span>|</span>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) <span>|</span>
+                        @Html.ActionLink("Details", "Details", new { id = item.SSID })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

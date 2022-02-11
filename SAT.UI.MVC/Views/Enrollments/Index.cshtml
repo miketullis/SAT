@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SAT.DATA.EF.Enrollment>
+
+@{
+    ViewBag.Title = "Enrollments Home";
+}
+
+<div class="card card-body max1000 drop">
+    <h2 class="text-center pb-4">@ViewBag.Title</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.EnrollmentDate)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
+                </th>
+                <th class="text-right">
+                @Html.ActionLink("Create New Enrollment", "Create")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.FullName)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.ScheduledClass.InstructorName)
+                    </td>
+                    <td class="text-right">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentId }) <span>|</span>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentId }) <span>|</span>
+                        @Html.ActionLink("Details", "Details", new { id = item.EnrollmentId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

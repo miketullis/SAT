@@ -1,0 +1,51 @@
+﻿@model SAT.DATA.EF.Course
+
+@{
+    ViewBag.Title = "Details: " + Model.CourseName;
+    string btnText = Model.IsActive ? "Retire" : "Activate";
+}
+
+
+<div class="card card-body max800 drop">
+    <h2 class="text-center pb-2">@ViewBag.Title</h2>
+    <div class="divCenter">
+        <dl class="dl-horizontal p-5">
+            <dd>
+                <span class="font-weight-bold pr-2">Course Name:</span>  @Html.DisplayFor(model => model.CourseName)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Description:</span>   @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Credit Hours:</span>  @Html.DisplayFor(model => model.CreditHours)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Curriculum:</span>   @Html.DisplayFor(model => model.Curriculum)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Is Active:</span>
+                <span>@(Model.IsActive == true ? "Yes" : "No")</span>
+            </dd>
+            @if (Model.Notes != null)
+            {
+                <dd>
+                    @Html.DisplayNameFor(model => model.Notes):
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Notes)
+                </dd>
+            }
+        </dl>
+    </div>
+    <p class="text-center">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }, new { @class = "btn btn-primary btn80" })
+
+            @Html.ActionLink(btnText, "Delete", new { id = Model.CourseId }, new { @class = "btn btn-primary btn80 ml-2" })
+        }
+        @*@Html.ActionLink("Return", "Index", "Courses", new { @class = "btn btn-primary btn80" })*@
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80 mr-0">Return</a>
+    </p>
+</div>
+

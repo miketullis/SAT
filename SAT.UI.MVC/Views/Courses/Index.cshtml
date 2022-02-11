@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SAT.DATA.EF.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<div class="card card-body max1000 drop">
+    <h2 class="text-center pb-4">@ViewBag.Title</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.CreditHours)
+                </th>
+                <th class="text-right">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Create New Course", "Create")
+                    }
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseName)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.CreditHours)
+                    </td>
+                    <td class="text-right">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                            <span>|</span>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })
+                            <span>|</span>
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = item.CourseId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

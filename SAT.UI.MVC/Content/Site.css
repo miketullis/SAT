@@ -1,0 +1,179 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.divCenter { /*make sure parent is set to text-center*/
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max800 {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.max1000 {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max90p {
+    max-width: 90%;
+    height: auto;
+}
+
+.min350{
+    min-width:350px;
+}
+
+a.btn80, input.btn80 {
+    min-width: 80px;
+    margin: 3px;
+    padding: .65em;
+}
+
+
+div.inFix input, div.inFix select, div.inFix textarea, .inFix label {
+    max-width: unset;
+    font-size: 1rem;
+}
+
+p.manage {
+    max-width: unset;
+    font-size: 1rem;
+}
+
+.table-striped td, .table-striped th {
+    font-size: 1rem;
+}
+
+.table thead th, .table tbody td {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.sidebar-brand-t img {
+    position: relative;
+    max-width: 160px;
+    top: 0px;
+    left: -10px;
+    height: auto;
+    vertical-align: middle;
+}
+.navbar-brand-t img {
+    position:relative;
+    max-width: 130px;
+    top: 35px;
+    left: 25px;
+    height: auto;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.navbar, .navbar.navbar-menu-wrapper{
+    z-index:10 !important;
+}
+
+ul.nav {
+    position: fixed;
+}
+
+.sidebar-brand.brand-logo-mini img.mini {
+    position: relative;
+    max-width: unset !important;
+    width: 120px !important;
+    top: 0px !important;
+    left: -10px;
+    height: auto !important;
+    margin: auto;
+    vertical-align: middle;
+    z-index:99;
+}
+
+.sidebar-brand-t img:hover, 
+.navbar-brand-t img:hover, 
+.sidebar-brand.brand-logo-mini img.mini:hover {
+    opacity: .5;
+}
+
+
+.sidebar .sidebar-brand-wrapper {
+    height: 130px !important;
+}
+
+
+.navbar .navbar-menu-wrapper {
+    box-shadow: unset; 
+    color: #ffffff;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 70px;
+}
+
+.navbar  {
+    height: 130px;
+}
+
+.navbar-toggler {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    font-size: 3rem !important;
+}
+
+/*----testing alt styling for more dynamic look.----*/
+.content-wrapper {
+    background: #5e6d7c !important;
+    padding-top: 7em;
+
+}
+
+.page-body-wrapper {
+    min-height: calc(100vh - 100px);
+}
+
+.drop{
+    box-shadow: 8px 8px 12px 2px #383737;
+}

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SAT.DATA.EF.StudentStatus>
+
+@{
+    ViewBag.Title = "Student Status : Tiled";
+}
+
+<div class="max1000">
+    <div class="card card-body drop mb-4">
+        <h2 class="text-center">@ViewBag.Title</h2>
+        <div class="text-center pb-4">
+            @Html.ActionLink("List View", "Index")
+        </div>
+        <div class="text-right">
+            @Html.ActionLink("Create New Status", "Create")
+        </div>
+    </div>
+    <div class="m-auto">
+        <div class="card-deck">
+            @foreach (var item in Model)
+            {
+                <div class="grid-margin d-flex col-lg-6 text-center">
+                    <div class="card card-body drop">
+                        <h4 class="card-header">
+                            <a href="@Url.Action("Details", new { id=item.SSID })" class="text-muted text-center">
+                                @Html.DisplayFor(modelItem => item.SSName)
+                            </a>
+                        </h4>
+                        <span></span>
+                        @Html.DisplayNameFor(model => model.SSDescription)
+                        @Html.DisplayFor(modelItem => item.SSDescription)
+                        <div class="card-footer text-center d-flex justify-content-around">
+                            @Html.ActionLink(" ", "Delete", new { id = item.SSID }, new { @class = "btn btn80 btn-outline-danger mdi mdi-delete" })
+                            @Html.ActionLink(" ", "Edit", new { id = item.SSID }, new { @class = "btn btn80 btn-outline-secondary mdi mdi-lead-pencil" })
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>

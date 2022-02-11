@@ -1,0 +1,31 @@
+﻿@model SAT.UI.MVC.Models.RoleViewModel
+
+@{
+    ViewBag.Title = "Edit Admin Role";
+}
+
+<div class="card card-body max800 p-5 text-center">
+    <h2 class="text-center pb-4">@ViewBag.Title</h2>
+    <div class="divCenter">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-group">
+                    <h4>Role Name</h4>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control min350 text-center" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="form-group pt-4">
+                    <div class="text-center">
+                        <input type="submit" value="Save" class="btn btn-primary btn80" />
+                        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

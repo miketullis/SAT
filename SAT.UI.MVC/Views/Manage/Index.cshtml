@@ -1,0 +1,84 @@
+﻿@model SAT.UI.MVC.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage your account";
+}
+
+<div class="card card-body max800 drop p-5">
+    <h2 class="text-center pb-0">@ViewBag.Title</h2>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div class="row">
+        <div class="divCenter inFix manage">
+            <p class="manage">
+                @(Model.HasPassword ? Html.ActionLink("Change your password?", "ChangePassword")
+                                                                    : Html.ActionLink("Pick a password", "SetPassword"))
+            </p>
+            <p class="manage">
+                Phone Number:&nbsp;&nbsp;@(Model.PhoneNumber ?? "None") [
+                @if (Model.PhoneNumber != null)
+                {
+                    @Html.ActionLink("Change", "AddPhoneNumber")
+                    @: &nbsp;|&nbsp;
+                    @Html.ActionLink("Remove", "RemovePhoneNumber")
+                }
+                else
+                {
+                    @Html.ActionLink("Add", "AddPhoneNumber")
+                }
+                ]
+            </p>
+            @*<p class="manage">
+                    External Logins:&nbsp;&nbsp;@Model.Logins.Count
+                    @Html.ActionLink("[Manage]", "ManageLogins")
+                </p>
+                @if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTFA", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p class="manage">
+                            Two factor is currently enabled:
+                            <input type="submit" value="Disable" class="btn btn-default" />
+                        </p>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTFA", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p class="manage">
+                            Two factor is currently disabled:
+                            <input type="submit" value="Enable" class="btn btn-default" />
+                        </p>
+                    }
+                }
+                @if (Model.BrowserRemembered)
+                {
+                    using (Html.BeginForm("ForgetBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p class="manage">
+                            Browser is curently remembered for two factor:
+                            <input type="submit" value="Forget Browser" class="btn btn-default" />
+                        </p>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("Remember Browser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <p class="manage">
+                            Browser is curently not remembered for two factor:
+                            <input type="submit" value="Remember Browser" class="btn btn-default" />
+                        </p>
+                    }
+                }*@
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("View User Accounts", "Index", "UsersAdmin", null, new { @class = "manage" })
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SAT.DATA.EF.ScheduledClass>
+
+@{
+    ViewBag.Title = "Scheduled Classes";
+}
+
+
+<div class="card card-body max1000 drop">
+    <h2 class="text-center pb-4">@ViewBag.Title</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.ScheduledClassStatus.SCSName)
+                </th>
+
+                <th class="text-right">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Create New Class", "Create")
+                    }
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+
+                    <td class="text-center">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="dropdown d-inline">
+                                <div href="#" class="btn btn-outline-primary btn-fw dropdown-toggle" data-toggle="dropdown">
+                                    @* dropdown-toggle adds the down arrow *@
+                                    @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
+                                </div>
+
+                                <div class="dropdown-menu" aria-haspopup="true" aria-expanded="false">
+                                    @Html.ActionLink("Active", "Delete", new { id = item.ScheduledClassId, @status = 1 }, new { @class = "dropdown-item text-white" })
+                                    @Html.ActionLink("Pending", "Delete", new { id = item.ScheduledClassId, @status = 2 }, new { @class = "dropdown-item text-white" })
+                                    @Html.ActionLink("Completed", "Delete", new { id = item.ScheduledClassId, @status = 3 }, new { @class = "dropdown-item text-white" })
+                                    @Html.ActionLink("Cancelled", "Delete", new { id = item.ScheduledClassId, @status = 4 }, new { @class = "dropdown-item text-white" })
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
+                        }
+                    </td>
+
+                    <td class="text-right">
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassId }) <span>|</span>
+                        @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,39 @@
+﻿@model SAT.DATA.EF.ScheduledClass
+
+@{
+    ViewBag.Title = "Delete: " + @Model.ScheduledClassDesc;
+}
+
+<div class="card card-body max800 drop">
+    <h2 class="text-center pb-2">@ViewBag.Title</h2>
+         <div class="pt-5 pb-5 divCenter">
+            <dl class="dl-horizontal">
+                <dd>
+                    <span class="font-weight-bold pr-2">Course Name:</span>@Html.DisplayFor(model => model.Course.CourseName)
+                </dd>
+                <dd>
+                    <span class="font-weight-bold pr-2">Scheduled:</span> @Html.DisplayFor(model => model.StartDate) to @Html.DisplayFor(model => model.EndDate)
+                </dd>
+                <dd>
+                    <span class="font-weight-bold pr-2">Instructor Name:</span>@Html.DisplayFor(model => model.InstructorName)
+                </dd>
+                <dd>
+                    <span class="font-weight-bold pr-2">Location:</span>  @Html.DisplayFor(model => model.Location)
+                </dd>
+                <dd>
+                    <span class="font-weight-bold pr-2">Status:</span>  @Html.DisplayFor(model => model.ScheduledClassStatus.SCSName)
+                </dd>
+            </dl>
+        </div>
+        <h3 class="text-center text-danger pb-4">Change class status to @Session["classStatus"]?</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <input type="submit" value="Yes" class="btn btn-primary btn80" />
+            @*@Html.ActionLink("No", "Index", "Courses", new { @class = "btn btn-primary btn80" })*@
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80">No</a>
+        </div>
+        }
+</div>

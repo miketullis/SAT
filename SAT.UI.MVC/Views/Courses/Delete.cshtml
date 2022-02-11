@@ -1,0 +1,51 @@
+﻿@model SAT.DATA.EF.Course
+
+@{
+    ViewBag.Title = "Retire: " + Model.CourseName;
+}
+
+<div class="card card-body max800 drop">
+    <h2 class="text-center pb-2">@ViewBag.Title</h2>
+    <div class="p-5 divCenter">
+        <dl class="dl-horizontal">
+            <dd>
+                <span class="font-weight-bold pr-2">Course Name:</span> @Html.DisplayFor(model => model.CourseName)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Description:</span>  @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Credit Hours:</span> @Html.DisplayFor(model => model.CreditHours)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Curriculum:</span>  @Html.DisplayFor(model => model.Curriculum)
+            </dd>
+            <dd>
+                <span class="font-weight-bold pr-2">Is Active:</span>
+                <span>@(Model.IsActive == true ? "Yes" : "No")</span>
+            </dd>
+
+            @if (Model.Notes != null)
+            {
+                <dd>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Notes)
+                </dd>
+            }
+        </dl>
+    </div>
+    <h3 class="text-center text-danger  pb-4">Are you sure you want to retire: <span class="font-italic"> @Model.CourseName</span>?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color text-center">
+        <input type="submit" value="Yes" class="btn btn-primary btn80" />
+        @*@Html.ActionLink("No", "Index", "Courses", new { @class = "btn btn-primary btn80" })*@
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80">No</a>
+    </div>
+    }
+</div>

@@ -1,0 +1,37 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Admin Role Details";
+}
+
+<div class="card card-body max800 p-5 text-center">
+    <h2 class="text-center pb-0">@ViewBag.Title</h2>
+    <h3 class="text-center pb-4">@Model.Name</h3>
+    <div class="divCenter">
+
+    
+    <h4>Users Currently Holding This Role</h4>
+    @if (ViewBag.UserCount == 0)
+    {
+        <hr />
+        <p>No users found in this role.</p>
+    }
+
+    <table class="table">
+        @foreach (var item in ViewBag.Users)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="pt-4">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class="btn btn-primary btn80"}) 
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn80">Return</a>
+    </div>
+</div>
+</div>
+
+
